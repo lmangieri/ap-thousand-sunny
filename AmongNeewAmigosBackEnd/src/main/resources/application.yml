@@ -1,0 +1,30 @@
+server:
+  port: 5000
+
+application:
+  urlJwkProvider: ${urlJwkProvider}
+  accessKey: ${accessKey}
+  secretKey: ${secretKey}
+  clientId: ${clientId}
+  userPool: ${userPool}
+  complexAppSecret: ${complexAppSecret}
+
+
+spring:
+  datasource:
+    hikari:
+      maxLifeTime: 100000
+    url: ${spring_datasource_url}
+    username: ${spring_datasource_username}
+    password: ${spring_datasource_password}
+  jpa:
+    show-sql: ${spring_jpa_show_sql}
+    hibernate:
+      ddl-auto: ${spring_jpa_hibernate_ddl_auto}
+      use-new-id-generator-mappings: false
+    database-platform: ${spring_jpa_database_platform}
+    properties:
+      max_allowed_packet: ${spring_jpa_properties_max_allowed_packet}
+      hibernate:
+        globally_quoted_identifier: true
+        dialect: org.hibernate.dialect.MySQL55Dialect

@@ -1,0 +1,29 @@
+<div class="customLoginDiv">
+    <form [formGroup]="loginForm" class="form-group"> 
+
+            <h1 class="h1 mb-3 font-weight-normal">Faça seu Login</h1>
+            <!-- <label for="inputEmail" class="sr-only">Email</label> -->
+            <input id="inputEmail" type="text" formControlName="email" class="form-control espacElement" placeholder="E-mail address">
+            <span class="text-danger" *ngIf="email?.invalid && email?.touched">Forneça um e-mail válido.</span>
+
+
+            <input type="password" formControlName="password" class="form-control espacElement" placeholder="password">
+            <span class="text-danger" *ngIf="password?.invalid && password?.touched">Necessário pelo menos 8 caracteres.</span>
+
+        <button  [disabled]="loginForm.invalid" (click)="login()" class="btn btn-lg btn-primary btn-block espacElement">
+            <b>Login </b>
+        </button>
+        <div *ngIf="responseErrorDto.message" class="alert alert-danger" role="alert">
+            {{ responseErrorDto.message }}
+        </div>
+
+    </form>
+
+    <button (click)="redirect('/home')"  class="btn btn-lg btn-dark btn-block espacElementLg">
+
+            <a>
+                Voltar para Home Page
+            </a>
+    </button>
+
+</div>

@@ -1,0 +1,66 @@
+<div *ngIf="isUserLogged" class="customHomeDiv">
+
+    <div class="alert alert-dark" role="alert">
+         <h1>Bem vindo <b>{{ getNick }}</b> </h1> 
+    </div>
+
+
+    <form [formGroup]="createPollForm" class="form-group espacElementLg">
+
+        <div class="alert alert-dark" role="alert">
+            <h1>Criação de Votação </h1> 
+       </div>
+
+       <input id="pollTitle" type="text" formControlName="pollTitle" class="form-control espacElement" placeholder="Título da Votação">
+       <span class="text-danger" *ngIf="pollTitle?.invalid && pollTitle?.touched">Título da Votação é obrigatório.</span>
+
+
+
+        <input id="option" type="text" formControlName="option" class="form-control espacElement" placeholder="Opção">
+        <span class="text-danger" *ngIf="optionErrorMessage != ''">{{optionErrorMessage}}</span>
+        <button (click)="addOption()" class="btn btn-lg btn-primary btn-block espacElement" >
+            Adicionar Opção
+        </button>
+
+
+
+        <div class="espacElementLg">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr >
+                    <th scope="col">
+                        <h1> Opções escolhidas para a votação </h1>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="listOptions.length == 0"><td>-</td></tr>
+                    <tr *ngFor="let option of listOptions">
+                        <td>{{ option }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button (click)="cleanForm()" class="btn btn-lg btn-primary btn-block espacElement" >
+            Limpar Opções
+        </button>
+
+
+        <button (click)="criarVotacao()" class="btn btn-lg btn-info btn-block espacElement">
+            <b>Criar Votação</b>
+        </button>
+        <div *ngIf="waitPollCreation" class="espacElementLg alert alert-light" role="alert"> 
+            <div class="text-center">
+                <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+                </div>
+                <h1 >A votação está sendo criada !!</h1>
+            </div>
+        </div>
+        <span class="text-danger" *ngIf="formErrorMessage != ''">{{formErrorMessage}}</span>
+    </form>
+
+
+</div>
+

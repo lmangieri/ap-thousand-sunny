@@ -1,0 +1,36 @@
+<div class="customSignUpDiv">
+    <form [formGroup]="signUpForm" class="form-group">
+        <h1 class="h1 mb-3 font-weight-normal">Faça seu Cadastro</h1>
+
+        <input id="inputNick" type="text" formControlName="nickName" class="form-control espacElement" placeholder="Apelido">
+        <span class="text-danger" *ngIf="nickName?.invalid && nickName?.touched">Seu apelido é obrigatório.</span>
+
+
+        <input id="inputEmail" type="text" formControlName="email" class="form-control espacElement" placeholder="E-mail">
+        <span class="text-danger" *ngIf="email?.invalid && email?.touched">Forneça um e-mail válido.</span>
+
+
+        <input type="password" formControlName="password" class="form-control espacElement" placeholder="Password">
+        <span class="text-danger" *ngIf="password?.invalid && password?.touched">Necessário pelo menos 8 caracteres.</span>
+
+
+        <button  [disabled]="signUpForm.invalid" (click)="register()" class="btn btn-lg btn-primary btn-block espacElement" >
+            <b>Cadastrar </b>
+        </button>
+
+        <div *ngIf="responseErrorDto.message">
+            {{ responseErrorDto.message }}
+        </div>
+        <div *ngIf="successSignUp" class="alert alert-success espacElement" role="alert">
+            O seu cadastro foi realizado! Um e-mail será enviado para que seja confirmado.
+        </div>
+
+    </form>
+
+    <button (click)="redirect('/home')"  class="btn btn-lg btn-dark btn-block espacElementLg">
+        <a>
+            Voltar para Home Page
+        </a>
+    </button>
+
+</div>

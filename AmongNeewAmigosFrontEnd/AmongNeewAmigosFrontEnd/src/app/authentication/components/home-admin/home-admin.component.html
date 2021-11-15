@@ -1,0 +1,29 @@
+<div class="customHomeDiv"> 
+    <div *ngIf="!isUserLogged">
+        <h1 class="h1 mb-3 font-weight-normal">Seja Bem-Vindo </h1>
+        <button (click)="redirect('/login')"  class="btn btn-lg btn-dark btn-block espacElementLg">
+            <a>
+                Login Administrador
+            </a>
+        </button>
+        <button (click)="redirect('/sign-up')"  class="btn btn-lg btn-dark btn-block espacElementLg">
+            <a>
+                Cadastro Administrador
+            </a>
+        </button>
+            
+    </div>
+    <div *ngIf="isUserLogged">
+
+        <button (click)="redirect('/home')"  class="btn btn-lg btn-dark btn-block espacElementLg">
+            <a>
+                Voltar para Home Page
+            </a>
+        </button>
+        <button (click)="loggout()"  class="btn btn-lg btn-dark btn-block espacElementLg">
+            <a>
+                Realizar Loggout
+            </a>
+        </button>
+    </div>
+</div>
